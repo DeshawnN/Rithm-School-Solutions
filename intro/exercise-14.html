@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>Functions Exercises</h1>
+	<h2>Part 1</h2>
+	<p>
+		<strong>Your assignment is to write the following functions in the descriptions below - good luck!</strong>
+	</p>
+	<ol>
+		<li>
+			<p>
+				<strong>difference</strong>
+				<p>this function takes in two parameters and returns the difference of the two</p>
+				<pre>difference(2,2); // 0
+difference(0,2); // -2</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>product</strong>
+				<p>this function takes in two parameters and returns the product of the two;</p>
+				<pre>product(2,2); // 4
+product(0,2); // 0</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>printDay</strong>
+				<p>this function takes in one parameter (a number from 1-7) and returns the day of the week (1 is Sunday, 2 is Monday, 3 is Tuesday etc.). If the number is less than 1 or greater than 7, the function should return undefined;</p>
+				<pre>printDay(4); // "Wednesday"
+printDay(41); // undefined</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>lastElement</strong>
+				<p>this function takes in one parameter (an array) and returns the last value in the array. It should return undefined if the array is empty.</p>
+				<pre>lastElement([1,2,3,4]); // 4
+lastElement([]); // undefined</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>numberCompare</strong>
+				<p>this function takes in two parameters (both numbers). If the first is greater than the second, this function returns "First is greater". If the second number is greater than the first, the function returns "Second is greater". Otherwise the function returns "Numbers are equal"</p>
+				<pre>numberCompare(1,1); // "Numbers are equal"
+numberCompare(2,1); // "First is greater"
+numberCompare(1,2); // "Second is greater"</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>singleLetterCount</strong>
+				<p>this function takes in two parameters (two strings). The first parameter should be a word and the second should be a letter. The function returns the number of times that letter appears in the word. The function should be case insensitive (does not matter if the input is lowercase or uppercase). If the letter is not found in the word, the function should return 0.</p>
+				<pre>singleLetterCount('amazing','A'); // 2
+singleLetterCount('Rithm School','o'); // 2</pre>
+			</p>
+		</li>
+	</ol>
+	<h2>Part 2</h2>
+	<ol>
+		<li>
+			<p>
+				<strong>multipleLetterCount</strong>
+				<p>this function takes in one parameter (a string) and returns an object with the keys being the letters and the values being the count of the letter.</p>
+				<pre>multipleLetterCount("hello"); // {h:1, e: 1, l: 2, o:1}
+multipleLetterCount("person"); // {p:1, e: 1, r: 1, s:1, o:1, n:1}</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>arrayManipulation</strong>
+				<p>this function should take in at most four parameters (an array, command, location, and value).</p>
+				<ul>
+					<li>
+						<strong>If the command is "remove" and the location is "end", the function should remove the last value in the array and return the value removed. (In this case, the function only needs three arguments.)</strong>
+					</li>
+					<li>
+						<strong>If the command is "remove" and the location is "beginning", the function should remove the first value in the array and return the value removed. (In this case, the function only needs three arguments.)</strong>
+					</li>
+					<li>
+						<strong>If the command is "add" and the location is "beginning", the function should add the value (fourth parameter) to the beginning of the array and return the array.</strong>
+					</li>
+					<li>
+						<strong>If the command is "add" and the location is "end", the function should add the value (fourth parameter) to the end of the array and return the array.</strong>
+					</li>
+				</ul>
+				<pre>arrayManipulation([1,2,3], "remove", "end"); // 3
+arrayManipulation([1,2,3], "remove", "beginning"); // 1
+arrayManipulation([1,2,3], "add", "beginning", 20); // [20,1,2,3]
+arrayManipulation([1,2,3], "add", "end", 30); // [1,2,3,30]</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>isPalindrome</strong>
+				<p>A Palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward. This function should take in one parameter and returns true or false if it is a palindrome. As a bonus, allow your function to ignore whitespace and capitalization so that isPalindrome('a man a plan a canal Panama'); returns true</p>
+				<pre>isPalindrome('testing'); // false
+isPalindrome('tacocat'); // true
+isPalindrome('hannah'); // true
+isPalindrome('robert'); // false</pre>
+			</p>
+		</li>
+	</ol>
+	<script>
+		// Part 1
+		// 1.
+		console.log("1.");
+		function difference(a,b) {
+			console.log(a - b);
+			return a - b;
+		}
+		difference(2,2); // 0
+		difference(0,2); // -2
+
+		// 2.
+		console.log("\n2.");
+		function product(a,b) {
+			console.log(a * b);
+			return a * b;
+		}
+		product(2,2); // 4
+		product(0,2); // 0
+
+		// 3.
+		console.log("\n3.");
+		function printDay(day) {
+			if (day < 0 || day > 7) {
+				console.log(undefined);
+				return undefined;
+			} else {
+				switch(day) {
+					case 1:
+						console.log("Sunday");
+						return "Sunday";
+					case 2:
+						console.log("Monday");
+						return "Monday";
+					case 3:
+						console.log("Tuesday");
+						return "Tuesday";
+					case 4:
+						console.log("Wednesday");
+						return "Wednesday";
+					case 5:
+						console.log("Thursday");
+						return "Thursday";
+					case 6:
+						console.log("Friday");
+						return "Friday";
+					case 7:
+						console.log("Saturday");
+						return "Saturday";
+				}
+			}
+		}
+		printDay(4); // "Wednesday"
+		printDay(41); // undefined
+
+		// 4.
+		console.log("\n4.");
+		function lastElement(arr) {
+			console.log(arr[arr.length - 1]);
+			return arr[arr.length - 1];
+		}
+		lastElement([1,2,3,4]); // 4
+		lastElement([]); // undefined
+
+		// 5.
+		console.log("\n5.");
+		function numberCompare(a, b) {
+			if (a > b) {
+				console.log("First is greater");
+				return "First is greater";
+			} else if (a < b) {
+				console.log("Second is greater");
+				return "Second is greater";
+			} else {
+				console.log("Numbers are equal");
+				return "Numbers are equal";
+			}
+		}
+		numberCompare(1,1); // "Numbers are equal"
+		numberCompare(2,1); // "First is greater"
+		numberCompare(1,2); // "Second is greater"
+
+		console.log("\n6.");
+		function singleLetterCount(word, letter) {
+			var count = 0;
+			for (var i = 0; i < word.length; i++) {
+				if (word[i].toLowerCase() === letter.toLowerCase()) {
+					count++;
+				}
+			}
+			console.log(count);
+			return count;
+		}
+		singleLetterCount('amazing','A'); // 2
+		singleLetterCount('Rithm School','o'); // 2
+		singleLetterCount('mississippi', 's'); // 4
+
+		// Part 2
+		// 1.
+		function multipleLetterCount(str) {
+			str = str.toLowerCase();
+			var obj = {};
+			for (var i = 0; i < str.length; i++) {
+				if (!(str[i] in obj)) {
+					obj[str[i]] = 1;
+				} else {
+					obj[str[i]]++;
+				}
+			}
+			console.log(obj);
+			return obj;
+		}
+		multipleLetterCount("hello"); // {h:1, e: 1, l: 2, o:1}
+		multipleLetterCount("person"); // {p:1, e: 1, r: 1, s:1, o:1, n:1}
+
+		// 3.
+		console.log("\n2.");
+
+		function arrayManipulation(arr, action, location, value) {
+			if (action === "remove") {
+				if (location === "beginning") {
+					return arr.shift();
+				} else if (location === "end") {
+					return arr.pop();
+				}
+			} else if (action === "add") {
+				if (location === "beginning") {
+					arr.unshift(value);
+					return arr;
+				} else if (location === "end") {
+					arr.push(value)
+					return arr;
+				}
+			}
+		}
+		arrayManipulation([1,2,3], "remove", "end"); // 3
+		arrayManipulation([1,2,3], "remove", "beginning"); // 1
+		arrayManipulation([1,2,3], "add", "beginning", 20); // [20,1,2,3]
+		arrayManipulation([1,2,3], "add", "end", 30); // [1,2,3,30]
+
+		// 3.
+		console.log("\n3.");
+		function isPalindrome(str) {
+			return str.toLowerCase() === str.toLowerCase().split("").reverse().join("");
+		}
+
+		// Part 3
+		// 1.
+		console.log("\n1.");
+		function RPS(cChoice) {
+			// You can optionally pass in a parameter to set the opponents choice for it, ideal for testing out all the conditional cases.
+			var userChoice = prompt("Rock, Paper or Scissors?").toLowerCase();
+			var choices = ["rock","paper","scissors"]
+			var cpuChoice = cChoice !== undefined ? cChoice : choices[Math.floor(Math.random() * (choices.length - 0) - 0)];
+
+			if (userChoice === "rock") {
+				if (cpuChoice === "paper") {
+					return "You lose!";
+				} else if (cpuChoice === "scissors") {
+					return "You win!";
+				} else {
+					return "Its a tie!";
+				}
+			} else if (userChoice === "paper") {
+				if (cpuChoice == "scissors") {
+					return "You lose!";
+				} else if (cpuChoice === "rock") {
+					return "You win!";
+				} else {
+					return "Its a tie!";
+				}
+			} else if (userChoice === "scissors") {
+				if (cpuChoice === "rock") {
+					return "You lose!";
+				} else if (cpuChoice === "paper") {
+					return "You win!";
+				} else {
+					return "Its a tie!";
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>Nested Arrays Exercises</h1>
+
+	<div>
+		<p>Write a function called rotate which takes an array and a number, and moves each element however many spaces the number is to the right. For the value at the end of the array, rotate should move it back to the beginning.</p>
+		<pre>rotate([1,2,3], 1) // [3,1,2]
+rotate([1,2,3], 2) // [2,3,1]
+rotate([1,2,3], 3) // [1,2,3]</pre>
+
+		<strong>Solution</strong>
+		<pre>function rotate(arr, num) {
+	for (var i = 0; i < num; i++) {
+		arr.unshift(arr.pop());
+    }
+	return arr;
+}</pre>
+	</div>
+
+	<div>
+		<p>Write a function called makeXOGrid which takes in two parameters, rows and columns, and returns an array of arrays with the number of values in each subarray equal to the columns parameter and the number of subarrays equal to the rows parameter. The values in the sub-arrays should switch between "X" and "O".</p>
+		<pre>makeXOGrid(1,4) 
+
+/*/
+[["X","O","X","O"]]
+/*/
+
+makeXOGrid(3,2) 
+
+/*/
+[["X","O"],["X","O"],["X","O"]]
+/*/
+
+makeXOGrid(3,3) 
+/*/
+[["X","O","X"],["O","X","O"],["X","O","X"]]
+/*/
+</pre>
+		<strong>Solution</strong>
+		<pre>function makeXOGrid(rows, columns) {
+	var arr = [];
+	
+	var isX = true;
+
+	for (var i = 0; i < columns; i++) {
+	    var subArr = [];
+        for (var j = 0; j < rows; j++) {
+            if (isX) {
+                subArr.push("X");
+            } else {
+                subArr.push("O");
+            }
+            isX = !isX;
+        }
+        arr.push(subArr);
+    }
+	return arr;
+}
+makeXOGrid(3, 2);</pre>
+	</div>
+</body>
+</html>

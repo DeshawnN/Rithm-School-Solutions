@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>Nested Data Structures Exercise</h1>
+	<p>let's try to write some functions that operate on this nested data structure</p>
+	<pre>var instructorData = {
+    name: "Elie",
+    additionalData: {
+        instructor: true,
+        favoriteHobbies: ["Playing Cello", "Tennis", "Coding"],
+        moreDetails: {
+            favoriteBasketballTeam: "New York Knicks",
+            numberOfSiblings: 3,
+            isYoungest: true,
+            hometown: {
+                city: "West Orange",
+                state: "NJ",
+            },
+            citiesLivedIn: ["Seattle", "Providence", "New York"]
+        }
+    }
+};</pre>
+	<ol>
+		<li>
+			<p>
+				<strong>Write a function called displayCities that console.logs all the values in the citiesLivedIn array:</strong>
+				<pre>displayCities();
+
+// "Seattle"
+// "Providence"
+// "New York"</pre>
+			</p>
+			<p>
+				<strong>Solution</strong>
+				<pre>function displayCities() {
+	var cities = instructorData.additionalData.moreDetails.citiesLivedIn;
+	for (city in cities) {
+		console.log(cities[city]);
+	}
+}
+displayCities();</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>Write a function called displayHometownData that console.logs all the values inside of the the hometown object</strong>
+				<pre>displayHometownData();
+
+// "West Orange"
+// "NJ"</pre>
+			</p>
+			<p>
+				<strong>Solution</strong>
+				<pre>function displayHometownData() {
+	var hometown = instructorData.additionalData.moreDetails.hometown;
+	for (val in hometown) {
+		console.log(hometown[val]);
+	}
+}
+displayHometownData();</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>Let's write a function called addDetail that accepts two parameters, a key and a value and adds the key and value to the moreDetails object and returns the moreDetails object</strong>
+				<pre>addDetail("isHilarious", true);
+/*
+{
+    favoriteBasketballTeam: "New York Knicks",
+    numberOfSiblings: 3,
+    isYoungest: true,
+    hometown: {
+        city: "West Orange",
+        state: "NJ",
+    },
+    citiesLivedIn: ["Seattle", "Providence", "New York"],
+    isHilarious: true
+}
+*/
+addDetail("previousApartments", ["Mission", "North Beach", "Nob Hill"]);
+/*
+{
+    favoriteBasketballTeam: "New York Knicks",
+    numberOfSiblings: 3,
+    isYoungest: true,
+    hometown: {
+        city: "West Orange",
+        state: "NJ",
+    },
+    citiesLivedIn: ["Seattle", "Providence", "New York"],
+    isHilarious: true
+    previousApartments: ["Mission", "North Beach", "Nob Hill"]
+}
+*/</pre>
+			</p>
+			<p>
+				<strong>Solution</strong>
+				<pre>function addDetail(key, val) {
+	if (key === undefined) {
+		return false;
+	} // not required for completion but ensures that no keys named undefined are added to object.
+
+	var moreDetails = instructorData.additionalData.moreDetails;
+
+	moreDetails[key] = val;
+
+	return moreDetails;
+}
+addDetail();</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>Finally, let's write a function called removeDetail that removes a key in the moreDetails object and returns the moreDetails object (the new keys added above are not included in these examples).</strong>
+				<pre>removeDetail('citiesLivedIn');
+/*
+{
+    favoriteBasketballTeam: "New York Knicks",
+    numberOfSiblings: 3,
+    isYoungest: true,
+    hometown: {
+        city: "West Orange",
+        state: "NJ",
+    }
+}
+*/
+removeDetail('hometown');
+/*
+{
+    favoriteBasketballTeam: "New York Knicks",
+    numberOfSiblings: 3,
+    isYoungest: true
+}
+*/
+removeDetail('favoriteBasketballTeam');
+/*
+{
+    numberOfSiblings: 3,
+    isYoungest: true
+}
+*/</pre>
+			</p>
+			<p>
+				<strong>Solution</strong>
+				<pre>function removeDetail(key) {
+	var moreDetails = instructorData.additionalData.moreDetails;
+	// checks whether or not the key input is an actual property of the moreDetails object, and if it isn't break out of the loop returning false.
+	if (!moreDetails.hasOwnProperty(key)) {
+		return false;
+	}
+
+	delete moreDetails[key];
+	return moreDetails; 
+}
+removeDetail();</pre>
+			</p>
+		</li>
+	</ol>
+</body>
+</html>

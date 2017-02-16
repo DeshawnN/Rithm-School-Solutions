@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Array Methods Exercises</h1>
+	<p><strong>Note: Any answer that requires code can be found in the console</strong></p>
+	<h2>Part 1</h2>
+	<p><strong>Write the code necessary to do the following</strong>:</p>
+	<ul>
+		<li>
+			<strong>Create an empty array called <code>arr</code>.</strong>
+		</li>
+		<li>
+			<strong>Add your first name to the <code>arr</code> variable</strong>
+		</li>
+		<li>
+			<strong>Add your last name to the end of the <code>arr</code> variable</strong>
+		</li>
+		<li>
+			<strong>Add your favorite color to the beginning of the <code>arr</code> variable</strong>
+		</li>
+	</ul>
+	<script>
+		var arr = [];
+		arr[0] = ("Deshawn");
+		arr.push("Nelson");
+		arr.unshift("blue");
+		console.log("1a.", arr);
+	</script>
+	<p><strong>Your variable arr should look like this (using Elie for a first name, Schoppik for a last name and purple for a favorite color) ["purple", "Elie", "Schoppik"]. Keep going!</strong></p>
+	<ul>
+		<li>
+			<strong>Remove the favorite color from the arr variable (remember this is the first value in the array - what method can you use to remove the first value in an array?)</strong>
+		</li>
+		<li>
+			<strong>Create another array called <code>arr2</code></strong>
+		</li>
+		<li>
+			<strong>Add your favorite number to <code>arr2</code></strong>
+		</li>
+		<li>
+			<strong>Add the string "JavaScript" to the end of the <code>arr2</code> variable</strong>
+		</li>
+	</ul>
+	<script>
+		arr.shift();
+		var arr2 = [];
+		arr2.push(13);
+		arr2.push("JavaScript");
+		console.log("1b.", arr2);
+	</script>
+	<p><strong>Your variable arr2 should look like this (using 42 as a favorite number) [42, "JavaScript"].</strong></p>
+	<ul>
+		<li>
+			<strong>See if the value 42 exists in the <code>arr2</code> array. Do this using the indexOf method. What does indexOf return to you if the value passed to it can not be found in the array?</strong>
+			<p>indexOf will return <code>-1</code> if the value passed isn't found in the array.</p>
+		</li>
+		<li>
+			<strong>Create a new variable called combinedArr which is the result of your arr and arr2 variables combined into one array.</strong>
+		</li>
+	</ul>
+	<script>
+		arr2.indexOf(13);
+
+		var combinedArr = arr.concat(arr2);
+		console.log("1c.", combinedArr);
+	</script>
+	<p><strong>Your combinedArr variable should look like this (using our previous values) ["Elie", "Schoppik", 42, "JavaScript"]</strong></p>
+
+	<h2>Part 2</h2>
+	<p><strong>Complete the following, starting from the following array: var arr = ["JavaScript", "Python", "Ruby", "Java"]</strong></p>
+	<ul>
+		<li>
+			<strong>Return the following array: ["Python", "Ruby"].</strong>
+		</li>
+		<li>
+			<strong>Combine the array with the array ["Haskell", "Clojure"].</strong>
+		</li>
+		<li>
+			<strong>Return the string "JavaScript, Python, Ruby, Java".</strong>
+		</li>
+		<li>
+			<strong>Try to explain, in your own words (or diagrams!) what the difference is between passing by value vs. passing by reference.</strong>
+			<p><strong>Passing by reference</strong> is when a variable stores a reference to an object, and any change to either is reflected in the other.</p>
+			<p><strong>Passing by value</strong> is when a variable stores a copy of a value stored elsewhere, it differs from the above in a simple enough way, unlike passing by references, if the value is changed, it isn't reflected anywhere else but at the source of the change.</p>
+		</li>
+	</ul>
+	<script>
+		var arr = ["JavaScript", "Python", "Ruby", "Java"];
+		console.log("2a.", arr);
+		console.log("2b.", arr.slice(1,3));
+		console.log("2c.", arr.concat(["Haskell", "Clojure"]));
+		console.log("2d.", arr.join(" "));
+	</script>
+</body>
+</html>

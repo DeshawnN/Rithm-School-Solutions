@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Variables and Primitives Exercises</h1>
+	<ol>
+		<li>
+			<p><strong>Create the following variables</strong></p>
+			<ul>
+				<li><strong><code>name</code>, which is a string set to your current name</strong></li>
+				<li><strong><code>dayOfBirth</code>, which is a number set to the day of your birth month</strong></li>
+			</ul>
+			<p>See console!</p>
+			<script>
+				var name = "Deshawn";
+				var dayOfBirth = 18;
+				console.log("1. name: " + name, "dayOfBirth: " + dayOfBirth);
+			</script>
+		</li>
+		<li>
+			<p><strong>See what happens when you have multiple variables of the same name. Which one takes precedence?</strong></p>
+			<p>The one defined later in the scope is the one that takes precedence, this is due to the fact that when a variable is defined, it creates a namespace for it to occupy. Namespaces are basically a unique name that points to the data stored in said variable making it impossible for 2 variables to share a name within the same scope, so when a new variable is declared with an existing name, It's treated simply as an assigment of a new value to the pre-existing namespace.</p>
+		</li>
+		<li>
+			<p><strong>Write some JavaScript that prompt's the user for their favorite color. Once the user has submitted a favorite color, log that color to the console along with a friendly message.</strong></p>
+			<button onclick="logColor();">Favorite Color Setter</button>
+			<script>
+				var favColor;
+				function logColor() {
+					favColor = prompt("Please enter your favorite color");
+					console.log("3. Favorite Color is: " + favColor);
+				};
+			</script>
+			<p>See Console!</p>
+		</li>
+		<li>
+			<p><strong>Create a string that contains both single quotes and double quotes.</strong></p>
+			<p>See Console!</p>
+			<script>
+				var str = "This is a string with double quotes \"\" and single quotes ''";
+				console.log("4. " + str);
+			</script>
+		</li>
+		<li>
+			<p><strong>What is the difference between null and undefined?</strong></p>
+			<p><code><strong>null</strong></code> is the the intentional absense of data, which is to say, a variable that that has been declared and initialized to be treated as if it has no value at all, while <code><strong>undefined</strong></code> simply means that the the variable may or may not be declared, and if it is, it currently doesn't have a value stored.</p>
+		</li>
+		<li>
+			<p><strong>What is NaN in JavaScript? What is the typeof NaN?</strong></p>
+			<p>NaN in JavaScript (and some other programming languages) is any non-number value. typeof NaN is "number", because ironically enough, despite NaN meaning not-a-number its still of the numerical data type.</p>
+		</li>
+		<li>
+			<p><strong>You can declare a variable by typing var thing;. What is the value of thing?</strong></p>
+			<p>undefined, because while the variable was declared it wasn't initialized with anything to store.</p>
+		</li>
+	</ol>
+</body>
+</html>

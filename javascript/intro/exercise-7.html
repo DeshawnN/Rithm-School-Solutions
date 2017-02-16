@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>Object Basic Exercises</h1>
+	<ol>
+		<li>
+			<strong>Create an object that has your firstName, lastName, and occupation as keys.</strong>
+		</li>
+		<li>
+			<strong>Access each value from your object using both dot notation and bracket notation.</strong>
+		</li>
+		<li>
+			<strong>Add a key for hobby to your object. Remove the key and value for occupation.</strong>
+		</li>
+		<li>
+			<strong>What is the difference between dot notation and bracket notation?</strong>
+			<p>Dot notation is faster to type, therefore ideal for typical use, while Bracket Notation is a bit more keystrokes, however it allows for the evaluation of expressions to be used as keys, as well as variables.</p>
+		</li>
+	</ol>
+
+	<script>
+		// 1.
+		console.log("Q1.");
+		var obj = {
+			firstName: "Deshawn",
+			lastName: "Nelson",
+			occupation: "Amazon Delivery Associate"
+		}
+		console.log(obj);
+
+		// 2.
+		console.log("Q2.");
+		// Dot Notation
+		console.log(obj.firstName);
+		console.log(obj.lastName);
+		console.log(obj.occupation);
+		// Bracket Notation
+		console.log(obj["firstName"]);
+		console.log(obj["lastName"]);
+		console.log(obj["occupation"]);
+
+		// 3.
+		console.log("Q3.");
+		obj.hobby = "Programming";
+		delete obj.occupation;
+		console.log(obj);
+	</script>
+</body>
+</html>

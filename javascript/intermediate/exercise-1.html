@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>Debugging Exercises</h1>
+	<ol>
+		<li>
+			<p>
+				<strong>What does the throw keyword do?</strong>
+				<p>The throw keyword allows the user to throw their own error messages.</p>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>What does the finally keyword do?</strong>
+				<p>The finally keyword is often tacked on to a try...catch chain and what it does is runs whatever code is within the blocks regardless of whether an error is thrown or not.</p>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>What is the difference between a TypeError and ReferenceError?</strong>
+				<p>TypeErrors are what you get when you try to use a value outside of its expected data type usage, for example, trying to invoke a string instead of a function.</p>
+				<p>ReferenceErrors are what you get when you try to reference a variable that doesn't exist in either the global or local scope</p>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>How do you create a snippet in the Chrome dev tools?</strong>
+				<p>By going into the sources tab, and navigating to the snippets tab in the lower left corner of the browser, and pressing the new snippet button. (or right clicking within the tab and clicking new)</p>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>In the Chrome dev tools, on the right hand side of the sources tab, there is a "pause" button which allows you to "pause on caught exceptions." What is an exception?</strong>
+				<p>Exceptions are errors.</p>
+			</p>
+		</li>
+		<li>
+			<p>
+				<strong>How do we "catch" errors in JavaScript? Give an example with code for what that might look like.</strong>
+				<p>using the try...catch block chain</p>
+				<pre>try {
+	codeThatDoesntWork;
+} catch(e) {
+	console.log("the error message", e);
+}
+				</pre>
+			</p>
+		</li>
+	</ol>
+	<p>
+		<strong>Explain what type of error will be thrown, why the error is occuring, and how to fix it:</strong>
+	</p>
+	<ol>
+		<li>
+			<p>
+				<pre>person;
+				</pre>
+				<p>It would throw a ReferenceError, because its referencing a variable that hasn't been declared, to fix it simply declare the person variable</p>
+				<pre>// Correct Code
+var person;
+person;
+
+				</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<pre>var data = {};
+data.displayInfo();</pre>
+				<p>It would throw a TypeError, because the data object doesn't have a displayInfo function/method, so its attempting to invoke undefined. To fix that, simply create an displayInfo method/function.</p>
+				<pre>var data = {};
+data.displayInfo = function() {
+	// function code here
+};
+data.displayInfo();
+				</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<pre>var data = {};
+data.displayInfo.foo = "bar";</pre>
+				<p>It would throw yet another TypeError, because as stated in the last example, displayInfo is of the undefined data type, so just as you can't treat it like a function, you also can't treat it as if it were any object, meaning the example tries to use dot notation to add a property to undefined. To fix that, you would simply either add the displayInfo object property during the initialization of the data object or using dot notation after the initialization of the data object.</p>
+				<pre> // Correct Code 1
+var data = {
+	displayInfo: {}
+};
+data.displayInfo.foo = "bar";
+
+// Correct Code 2
+var data = {};
+data.displayInfo = {};
+data.displayInfo.foo = "bar";
+
+				</pre>
+			</p>
+		</li>
+		<li>
+			<p>
+				<pre>function data(){
+    var thing = "foo";
+}
+data();
+thing;</pre>
+				<p>That would throw a ReferenceError, because its attempting to reference a variable that isn't available in the current scope. The thing variable only exists in the scope of the data function and any scopes created within it, so it can't be reference on the global scope. There are many different ways to fix this particular issue, however to keep it simply, I'll limit it to the two that came to my mind first.</p>
+
+				<p>The first thing you can do to solve this, is also the simplest, simply create a thing variable in the global scope, then then omit the variable declaration in the data function, that way upon invoking the function the thing is assigned a value of "foo" on the global instead of declared and initialized locally.</p>
+				<pre>var thing;
+function data() {
+	thing = "foo";
+}
+data();
+thing; // "foo"
+				</pre>
+				<p>The second thing you can do to solve this is by returning the value of thing, so it can be assigned to any variable outside of the scope, for simplicity's sake I'll still declare a thing variable on the global scope to better illustrate the solution.</p>
+				<pre>var thing;
+function data() {
+	thing = "foo";
+	return thing;
+}
+thing = data();
+thing; // "foo"
+
+				</pre>
+			</p>
+		</li>
+	</ol>
+
+	<h2>Part 2</h2>
+	<p>Fix the broken code and explain what was wrong:</p>
+	<ol>
+		<li>
+			<pre>for(var i=0; i > 5; i++){
+    console.log(i);
+}</pre>
+			<p>The problem with the above loop lies in its conditional, you see, as it is above, the loop will only iterate if "i is greater than 5", which isn't the case as i is initialized at 0. To fix this, you simply change the condition to "i is less than 5", by using a less-than symbol "<", rather than a greater-than symbol.</p>
+			<pre>for (var i = 0; i < 5; i++) {
+	console.log(i);
+}</pre>
+		</li>
+		<li>
+			<pre>function addIfEven(num){
+    if(num % 2 = 0){
+        return num + 5;
+    }
+    return num;
+}</pre>
+			<p>The above code is incorrect because of the following snippet "if(num % 2 = 0)", this is a... rather botched assignment statement instead of the expected conditional statement. To fix that you simply add another equals sign or two.</p>
+			<pre>function addIfEven(num) {
+	if (num % 2 == 0) {
+	return num + 5;
+	}
+	return num;
+}</pre>
+		</li>
+		<li>
+			<pre>function loopToFive(){
+    for(var i=0, i < 5, i++){
+        console.log(i);
+    }
+}</pre>
+			<p>The problem with the above lies in the usage of commas in the conditional instead of semicolons. Also, while not an issue, but a nitpick, the above code wouldn't loop to five anyway without changing the condition from "i < 5" to "i <= 5".</p>
+			<pre>function loopToFive() {
+	for (var i = 0; i <= 5; i++) {
+		console.log(i);
+	}
+}</pre>
+		</li>
+		<li>
+			<pre>function displayEvenNumbers(){
+    var numbers = [1,2,3,4,5,6,7,8];
+    var evenNumbers = [];
+    for(var i = 0; i < numbers.length-1; i++;){
+        if(numbers % 2 = 0); {
+            evenNumbers.push(i);
+        }
+        return evenNumbers;
+    }
+}
+displayEvenNumbers(); // should return [2,4,6,8] </pre>
+			<p>Okay, this one is a bit much to explain, but I'll try my best</p>
+			<ol>
+				<li>
+					<code>i++; to i++</code>
+					<p>
+						<strong>Explanation</strong> - the above code is wrong because the end of a loop statement doesn't require a semi-colon, which may go against the whole "end every statement with a semi-colon" best practices, but when it comes to loop statements its syntactically incorrect to do anything but omit them from the final statement.
+					</p>
+				</li>
+				<li>
+					<code>if(numbers % 2 = 0); to if (numbers[i] % 2 === 0)</code>
+					<p>
+						<strong>Explanation</strong> - this is a three pronged fix, for starters the semicolon at the end of the statement is unnecessary, while it doesn't mess anything up it could potentially make your code confusing to anyone reading it so its better to be safe than sorry. Then we have the same issue we had in a previous example, the if conditional is a broken assignment statement rather than a comparison, so "numbers % 2 = 0" needs to be changed to "numbers % 2 === 0". Finally, the conditional itself isn't right, as it is, in plain english equates to "if the numbers <strong>array</strong> can be divided by 2 and equal integer 0 run the following code block", now arrays and integers aren't the same data type by any means, evaluating the expression to "NaN === 0", which is false, so the code block will never actually run, to fix that, you simply add "[i]" to the end of the numbers variable, signifying that you actually want to evaluate "if the current value of i in the numbers array divided by 2 is equal to 0". 
+					</p>
+				</li>
+				<li>
+					<code>evenNumbers.push(i) to evenNumbers.push(numbers[i])</code>
+					<p>
+						<strong>Explanation</strong> - This needs to be changed otherwise it will simply push the current value of i to the evenNumbers array, which isn't what we want. By changing the statement we ensure that correct values in the numbers array are pushed to the evenNumbers array.
+					</p>
+				</li>
+				<li>
+					<pre>return evenNumbers needs to be moved outside of loop block</pre>
+					<p>
+						<strong>Explanation</strong> - this one is pretty straightforward, the return statement needs to be moved out of the loop otherwise it will interfere with the data pushing, this is due to the fact that return statements automatically break out of a function body, meaning that at best only one iteration will occur. By moving it outside of the loop body we ensure that all the numbers are pushed into the evenNumbers array before the function is broken out of.
+					</p>
+				</li>
+			</ol>
+			<pre>function displayEvenNumbers() {
+	var numbers = [1,2,3,4,5,6,7,8];
+	var evenNumbers = [];
+	for (var i = 0; i < numbers.length; i++) {
+		if (numbers[i] % 2 == 0) {
+			evenNumbers.push(numbers[i]);
+		}
+	}
+	return evenNumbers;
+}</pre>
+		</li>
+	</ol>
+</body>
+</html>
